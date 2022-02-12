@@ -1,0 +1,33 @@
+Installing PYSPARK
+1. Install JAVA JDK which included JRE
+2. Download Apache Spark from its download page "spark.apache.org"
+3. Extract the downloaded zip
+4. Create a directory at "/usr/loca/spark"
+5. move the extracted spark contents to the newly created directory
+6. make the following change in Java Path
+>>sudo vim /etc/environment
+Append:
+JAVA_HOME="/usr/lib/jvm/jdk-version"
+and then source the /etc/environment file into terminal
+7. Append the following environment/ path variables to ".bashrc" file
+
+export SPARK_HOME=/usr/local/spark/spark-3.2.1-bin-hadoop3.2
+export PATH=${PATH}:${SPARK_HOME}/bin
+
+export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
+
+export PYSPARK_PYTHON=python3
+export PYSPARK_DRIVER_PYTHON="usr/bin/python3"
+
+export PATH=$PATH:$JAVA_HOME/jre/bin
+
+8. Source the modified .bashrc file
+9. verify the path variable by typing the following at terminal:
+"echo $SPARK_HOME"
+It should echo the path where spark is located.
+9. Download the pyspark which is spark driver for python
+"pip3 install pyspark"
+10. use "pip3 freeze" to check and note the version of pyspark. This is, in the current 
+case, pyspark==3.2.1. In order to get pyspark and apache spark to work, they need to be
+compatible. If they are not compatible then there will be errors.
+11. run pyspark in the terminal to verify that it is working.
